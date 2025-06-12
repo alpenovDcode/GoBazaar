@@ -1,6 +1,8 @@
 # GoBazaar - Microservices-Based E-commerce Platform
 
 [![CI](https://github.com/alpewa/GoBazaar/actions/workflows/ci.yml/badge.svg)](https://github.com/alpewa/GoBazaar/actions)
+[![Docker Build](https://github.com/alpewa/GoBazaar/actions/workflows/docker.yml/badge.svg)](https://github.com/alpewa/GoBazaar/actions)
+[![CodeQL](https://github.com/alpewa/GoBazaar/actions/workflows/codeql.yml/badge.svg)](https://github.com/alpewa/GoBazaar/actions)
 [![Coverage](https://img.shields.io/codecov/c/github/alpewa/GoBazaar)](https://codecov.io/gh/alpewa/GoBazaar)
 [![Go Report Card](https://goreportcard.com/badge/github.com/alpewa/GoBazaar)](https://goreportcard.com/report/github.com/alpewa/GoBazaar)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -151,41 +153,71 @@ make status        # Show project status
 └── README.md
 ```
 
-## Development Progress
+## 📅 Development Progress
 
-### ✅ Day 1 - Project Initialization (Completed)
-- [x] Initialize repository and create service directories
-- [x] Create basic project structure with all microservices
-- [x] Add base `main.go` files for each service
-- [x] Configure `go.mod` with dependencies
-- [x] Create initial documentation and `.gitignore`
+### ✅ Day 1 - Project Setup (Completed)
+- [x] Project structure with 6 microservices
+- [x] Go modules configuration (Go 1.23)
+- [x] Basic Makefile with build commands
+- [x] Docker setup with multi-stage builds
+- [x] Docker Compose with PostgreSQL, Redis, NATS
+- [x] Initial README and .gitignore
 
-### ✅ Day 2 - Development Tooling & Docker Setup (Completed)
-- [x] Enhanced Makefile with 20+ development commands
-- [x] Docker configuration for all services with multi-stage builds
-- [x] Development tooling setup (golangci-lint, formatting, testing)
-- [x] Created `.dockerignore` for optimized Docker builds
-- [x] Added comprehensive linting configuration (`.golangci.yml`)
-- [x] Implemented basic models and tests
-- [x] Created setup script for development environment
-- [x] Docker Compose configuration with health checks
+### ✅ Day 2 - Development Environment (Completed)
+- [x] Enhanced Makefile (20+ commands)
+- [x] .dockerignore optimization
+- [x] golangci-lint configuration
+- [x] User model with tests
+- [x] Development setup script
+- [x] All builds successful
 
-### 🚧 Day 3 - CI/CD Pipeline (In Progress)
-- [ ] GitHub Actions workflow for linters and tests
-- [ ] Automated testing pipeline
-- [ ] Code coverage reporting
-- [ ] Security scanning integration
+### ✅ Day 3 - CI/CD Pipeline (Completed)
+- [x] GitHub Actions workflows (CI, Docker, Release, CodeQL)
+- [x] GoReleaser configuration
+- [x] Dependabot setup
+- [x] Multi-platform Docker builds
+- [x] Automated testing and security scanning
 
-### 📋 Upcoming Days
-- **Day 4-6**: Auth Service implementation
-- **Day 7-10**: Product Service implementation  
-- **Day 11-15**: Cart Service implementation
-- **Day 16-20**: Order Service implementation
-- **Day 21-25**: Payment Service implementation
-- **Day 26-27**: API Gateway implementation
-- **Day 28**: Local environment setup
-- **Day 29**: Kubernetes deployment
-- **Day 30**: Monitoring and final polish
+### ✅ Day 4 - Auth Service Implementation (Completed)
+- [x] Complete authentication models (User, JWT, RefreshToken)
+- [x] JWT token generation and validation
+- [x] Password hashing with bcrypt
+- [x] User repository with GORM
+- [x] Authentication service layer
+- [x] HTTP handlers for auth endpoints
+- [x] Middleware for JWT validation
+- [x] Database migrations
+- [x] Docker integration
+
+**Auth Service Features:**
+- User registration and login
+- JWT access and refresh tokens
+- Password change functionality
+- User profile management
+- Role-based access control (Customer, Admin, Moderator)
+- Secure password hashing
+- Token refresh mechanism
+- Health check endpoint
+
+**API Endpoints:**
+- `POST /auth/register` - User registration
+- `POST /auth/login` - User authentication
+- `POST /auth/refresh` - Token refresh
+- `POST /auth/logout` - User logout
+- `GET /auth/profile` - Get user profile (protected)
+- `PUT /auth/profile` - Update profile (protected)
+- `PUT /auth/change-password` - Change password (protected)
+- `GET /health` - Health check
+
+### 🔄 Day 5 - Product Service (In Progress)
+- [ ] Product models and database schema
+- [ ] Product CRUD operations
+- [ ] Category management
+- [ ] Inventory tracking
+- [ ] Search and filtering
+- [ ] Image upload handling
+- [ ] Price management
+- [ ] Product reviews system
 
 ## Environment Variables
 
@@ -194,7 +226,7 @@ Create a `.env` file in the root directory:
 ```bash
 # Database
 DB_HOST=localhost
-DB_PORT=5432
+DB_PORT=5433
 DB_USER=postgres
 DB_PASSWORD=postgres
 DB_NAME=gobazaar
